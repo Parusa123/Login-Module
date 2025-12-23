@@ -1,1 +1,69 @@
-Hello there !! here im sharing my login module with you hope u encourage me to do more
+START
+  ↓
+┌─────────────────┐
+│ Student/Admin   │
+│ Opens App       │
+│ (React Frontend)│
+└─────────┬───────┘
+          ↓
+┌─────────────────┐
+│ 1. LANDING PAGE │
+│ [Login/Signup   │
+│  Buttons]       │
+└─────────┬───────┘
+          ↓
+    ┌──────┴──────┐
+    │             │
+ ┌──▼──┐       ┌──▼──┐
+ │Login│       │Signup│
+ │Form │       │Form  │
+ └────┼──┐    └────┼──┘
+      ↓   │         ↓
+ ┌────┴──┐│    ┌────┴──┐
+ │ 2. FILL││    │Create │
+ │Email   ││    │Account│
+ │Password││    └───────┘
+ └────┼──┘│
+      ↓   │
+ ┌────┴──┐│
+ │ 3. CLICK││
+ │"LOGIN" ││ ← onSubmit()
+ └────┼──┘│
+      ↓   │
+ ┌────┴──┐│
+ │ 4. API CALL   │
+ │ POST /api/auth│
+ │ login         │
+ │ {email,pass}  │
+ └────┼──┘│
+      ↓   │
+    ┌────▼────┐│
+    │Loading..││
+    │Spinner  ││
+    └────┼──┘│
+         ↓   │
+    ┌────┴──┐│
+    │5. SUCCESS││
+    │Token Saved││ ← localStorage.setItem('token')
+    │Redirect →  ││
+    │Dashboard   ││
+    └────┼──┘│
+         ↓   │
+ ┌────┴──┐  │
+ │MAIN APP│  │
+ │(Categories)│
+ └───────┘  │
+            │
+       ┌────▼────┐
+       │ERROR PATH│
+       │Invalid   │
+       │Credentials│
+       └────┼──┘
+            ↓
+       ┌────┼──┐
+       │Show │
+       │Error│
+       │Message│
+       └────┘
+         ↑
+    Back to Form
