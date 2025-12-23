@@ -1,1 +1,115 @@
+START
+  ↓
+┌─────────────────┐
+│ node server.js  │
+│ or npm start    │
+└─────────┬───────┘
+          ↓
+┌─────────────────┐
+│ 1. REQUIRE      │
+│ MODULES         │
+│ express()       │
+│ cors() dotenv() │
+│ mongoose        │
+└─────────┬───────┘ [web:1]
+          ↓
+┌─────────────────┐
+│ 2. LOAD ENV     │
+│ PORT=5000       │
+│ MONGODB_URI=... │
+│ JWT_SECRET=...  │
+└─────────┬───────┘
+          ↓
+┌─────────────────┐
+│ 3. APP INSTANCE │
+│ const app =     │
+│ express()       │
+└─────────┬───────┘
+          ↓
+┌─────────────────┐
+│ 4. MIDDLEWARE   │
+│ app.use(cors()) │
+│ app.use(json()) │
+│ app.use('/api', │
+│   express.json())│
+└─────────┬───────┘ [web:2]
+          ↓
+┌─────────────────┐
+│ 5. DB CONNECT   │
+│ connectDB()     │
+│ MongoDB Atlas   │
+│ or localhost    │
+└─────────┬───────┘
+          ↓
+┌─────────────────┐
+│ 6. ROUTES SETUP │
+│ app.use('/api/  │
+│   auth',        │
+│   authRoutes)   │
+│ app.use('/api/  │
+│   categories',  │
+│   catRoutes)    │
+└─────────┬───────┘
+          ↓
+┌─────────────────┐
+│ 7. HEALTH CHECK │
+│ app.get('/',    │
+│   (req,res)=>   │
+│   res.send('OK'))│
+└─────────┬───────┘
+          ↓
+┌─────────────────┐
+│ 8. ERROR        │
+│ HANDLER         │
+│ app.use((err,..)│
+│   res.status(500)│
+└─────────┬───────┘
+          ↓
+┌─────────────────┐
+│ 9. START SERVER │
+│ app.listen(PORT,│
+│   ()=>{         │
+│     console.log │
+│     `Server on  │
+│     ${PORT}`    │
+│   })            │
+└─────────┬───────┘
+          ↓
+┌─────────────────┐
+│ SERVER RUNNING! │
+│ localhost:5000  │
+│ ✅ DB Connected │
+│ ✅ CORS Enabled │
+└───────────────┘
+    ↓
+FRONTEND CAN CONNECT
+   ↓
+LOGIN → CATEGORIES → COURSES → STUDENTS
+
+
+
+1. Imports
+   ↓
+2. Config (dotenv, connectDB)
+   ↓
+3. Express App + Middleware
+   ↓
+4. Routes (auth, categories, courses, students)
+   ↓
+5. Health Check + Error Handler
+   ↓
+6. app.listen(PORT)
+
+
+
+React Frontend (localhost:3000)
+       ↓ CORS
+Node Server (localhost:5000)
+       ↓ Routes
+MongoDB (Atlas/Local)
+
+
+Server running on port 4000
+✅ MongoDB Connected
+🚀 Ready for login requests!
 
